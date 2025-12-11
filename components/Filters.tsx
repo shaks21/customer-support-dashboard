@@ -352,7 +352,7 @@ export default function Filters({ filters, onFilterChange, messageCount, message
       </div>
 
       {/* Quick Stats Bar - Ultra Compact */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-3">
+      <div className="bg-linear-to-r from-gray-50 to-gray-100 rounded-xl p-3">
         <div className="grid grid-cols-4 gap-2 text-center">
           <div>
             <div className="text-xs text-gray-600">Total</div>

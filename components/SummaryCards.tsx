@@ -262,7 +262,7 @@ export default function SummaryCards({ messages }: SummaryCardsProps) {
           onClick={() => setIsSummaryCollapsed(!isSummaryCollapsed)}
           className={cn(
             "group w-full flex items-center justify-between px-5 py-4",
-            "bg-gradient-to-r from-gray-50 to-white rounded-xl border",
+            "bg-linear-to-r from-gray-50 to-white rounded-xl border",
             "hover:shadow-md transition-all duration-200",
             "hover:border-gray-300",
             !isSummaryCollapsed && "border-blue-200 bg-blue-50/30"
@@ -496,7 +496,7 @@ export default function SummaryCards({ messages }: SummaryCardsProps) {
           </div>
 
           {/* Quick Stats Bar - Minimalist */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 p-4">
+          <div className="bg-linear-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 p-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-700">

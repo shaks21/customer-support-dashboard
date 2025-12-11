@@ -1,12 +1,10 @@
-I'll update the README.md with the Future Improvements section. Here's the complete updated README:
-
 ```markdown
 # Customer Support Triage Dashboard
 
 A dashboard for triaging customer support messages, built in 24 hours for the 24-Hour Build Challenge.
 
 ## 🚀 Live Demo
-[Deployed on Vercel]() - *Add Vercel URL here after deployment*
+[Deployed on Vercel]() - https://customer-support-dashboard-eta.vercel.app/
 
 ## 📋 Features
 
@@ -23,7 +21,6 @@ A dashboard for triaging customer support messages, built in 24 hours for the 24
 - ✅ Visual indication of high-priority messages
 - ✅ Status tracking and filtering
 - ✅ Bulk actions (Mark All Resolved, Reset All)
-- ✅ Mobile-responsive design
 
 ## 🛠️ Tech Stack
 
@@ -77,27 +74,46 @@ Priority is determined by:
 4. Dashboard updates in real-time with summary statistics
 5. Bulk actions allow quick status updates across multiple messages
 
-## 📊 Project Structure
+## ⏱️ Approach taken
 
-```
-customer-support-dashboard/
-├── app/                    # Next.js app router
-│   ├── layout.tsx         # Root layout with header/footer
-│   ├── page.tsx           # Main dashboard page
-│   └── globals.css        # Global styles with Tailwind
-├── components/            # React components
-│   ├── Dashboard.tsx      # Main dashboard container
-│   ├── Filters.tsx        # Filter controls (category, priority, status)
-│   ├── MessageCard.tsx    # Individual message display card
-│   └── SummaryCards.tsx   # Summary statistics cards
-├── lib/                   # Utilities and data
-│   ├── types.ts           # TypeScript interfaces
-│   ├── data.ts            # 18 mock support messages
-│   ├── categorize.ts      # Keyword-based categorization logic
-│   └── utils.ts           # Helper functions (formatting, colors)
-├── public/                # Static assets
-└── package.json          # Dependencies and scripts
-```
+- **Phase 1**: Project setup, planning, and architecture design
+- **Phase 2**: Core components, data structure, and TypeScript setup
+- **Phase 3**: UI implementation, styling, and responsive design
+- **Phase 4**: Filtering functionality and interactive features
+- **Phase 5**: Polish, testing, edge cases, and bug fixes
+- **Phase 6**: Documentation, README, and deployment preparation
+- **Phase 7**: Final review, adjustments, and submission preparation
+
+## 📝 Design Decisions
+
+### Technical Decisions
+1. **Keyword-based categorization**: Chosen over AI for predictability and speed within the 24-hour constraint
+2. **Client-side state management**: Used React state instead of database for simplicity
+3. **Component-based architecture**: Modular components for maintainability
+4. **TypeScript**: For type safety and better developer experience
+5. **Tailwind CSS**: For rapid, consistent styling
+
+### UX Decisions
+1. **Card-based layout**: Easy to scan and works well on both desktop and mobile
+2. **Color coding**: Visual hierarchy using consistent colors for priorities and categories
+3. **Progressive disclosure**: Filters are expandable, showing active filters when in use
+4. **One-click status updates**: Quick action buttons for changing message status
+5. **Real-time updates**: Dashboard updates immediately when filters or statuses change
+
+### Trade-offs Made
+1. **No backend API**: All logic runs client-side for simplicity
+2. **No authentication**: Since it's a demo/internal tool
+3. **No persistent storage**: State resets on page refresh
+4. **Simple categorization**: Keyword-based instead of ML/AI for reliability
+
+## 🧪 Testing Notes
+
+The dashboard has been tested for:
+- Responsive design (mobile, desktop)
+- Filter combinations work correctly
+- Status updates persist during session
+- Bulk actions affect all filtered messages
+- Edge cases (empty filter results, etc.)
 
 ## 🔮 Future Improvements
 
@@ -167,47 +183,6 @@ If I had more time, I would implement:
 - Automated triaging rules
 - Customer satisfaction tracking
 - Integration with CRM systems
-
-## ⏱️ Time Spent
-
-- **Hours 0-2**: Project setup, planning, and architecture design
-- **Hours 2-6**: Core components, data structure, and TypeScript setup
-- **Hours 6-10**: UI implementation, styling, and responsive design
-- **Hours 10-14**: Filtering functionality and interactive features
-- **Hours 14-18**: Polish, testing, edge cases, and bug fixes
-- **Hours 18-22**: Documentation, README, and deployment preparation
-- **Hours 22-24**: Final review, adjustments, and submission preparation
-
-## 📝 Design Decisions
-
-### Technical Decisions
-1. **Keyword-based categorization**: Chosen over AI for predictability and speed within the 24-hour constraint
-2. **Client-side state management**: Used React state instead of database for simplicity
-3. **Component-based architecture**: Modular components for maintainability
-4. **TypeScript**: For type safety and better developer experience
-5. **Tailwind CSS**: For rapid, consistent styling
-
-### UX Decisions
-1. **Card-based layout**: Easy to scan and works well on both desktop and mobile
-2. **Color coding**: Visual hierarchy using consistent colors for priorities and categories
-3. **Progressive disclosure**: Filters are expandable, showing active filters when in use
-4. **One-click status updates**: Quick action buttons for changing message status
-5. **Real-time updates**: Dashboard updates immediately when filters or statuses change
-
-### Trade-offs Made
-1. **No backend API**: All logic runs client-side for simplicity
-2. **No authentication**: Since it's a demo/internal tool
-3. **No persistent storage**: State resets on page refresh
-4. **Simple categorization**: Keyword-based instead of ML/AI for reliability
-
-## 🧪 Testing Notes
-
-The dashboard has been tested for:
-- Responsive design (mobile, tablet, desktop)
-- Filter combinations work correctly
-- Status updates persist during session
-- Bulk actions affect all filtered messages
-- Edge cases (empty filter results, etc.)
 
 ## 🙏 Acknowledgments
 

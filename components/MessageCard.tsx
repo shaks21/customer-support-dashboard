@@ -188,7 +188,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
         {/* Message Content */}
         <div className="mb-4">
           <div className="flex items-start mb-2">
-            <MessageCircle className="w-4 h-4 text-gray-400 mt-0.5 mr-2 flex-shrink-0" />
+            <MessageCircle className="w-4 h-4 text-gray-400 mt-0.5 mr-2 shrink-0" />
             <p className="text-gray-700 leading-relaxed line-clamp-3">
               {message.message}
             </p>
@@ -208,7 +208,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold mr-2">
+              <div className="w-8 h-8 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold mr-2">
                 {message.customerName.charAt(0)}
               </div>
               <div>
@@ -241,7 +241,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
 
         {/* Quick Actions Bar - Appears on Hover */}
         {isHovered && (
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white to-transparent rounded-b-2xl">
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-white via-white to-transparent rounded-b-2xl">
             <div className="flex items-center justify-center space-x-3">
               <button
                 onClick={() => onStatusChange(message.id, 'New')}

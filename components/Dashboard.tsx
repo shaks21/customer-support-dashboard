@@ -50,7 +50,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Header Section - Subtle Blue */}
-      <div className="bg-gradient-to-r from-blue-50 to-blue-50/50 rounded-2xl p-6 border border-blue-100">
+      <div className="bg-linear-to-r from-blue-50 to-blue-50/50 rounded-2xl p-6 border border-blue-100">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Support Triage Dashboard</h1>
@@ -68,7 +68,7 @@ export default function Dashboard() {
             </button>
             <button
               onClick={markAllAsResolved}
-              className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-lg hover:from-green-600 hover:to-green-700 shadow-sm"
+              className="px-4 py-2 text-sm font-medium text-white bg-linear-to-r from-green-500 to-green-600 rounded-lg hover:from-green-600 hover:to-green-700 shadow-sm"
             >
               Mark All Resolved
             </button>
@@ -89,7 +89,7 @@ export default function Dashboard() {
       </div>
 
       {/* Filters Section - Light Gray */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-50/50 rounded-2xl border border-gray-200 p-6">
+      <div className="bg-linear-to-r from-gray-50 to-gray-50/50 rounded-2xl border border-gray-200 p-6">
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-gray-900 flex items-center">
             <div className="w-1.5 h-5 bg-gray-500 rounded-full mr-2"></div>
@@ -179,7 +179,7 @@ export default function Dashboard() {
       </div>
 
       {/* Footer Stats - Subtle Gradient */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 text-white">
+      <div className="bg-linear-to-r from-gray-900 to-gray-800 rounded-2xl p-6 text-white">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="text-center">
             <div className="text-3xl font-bold">{filteredMessages.length}</div>

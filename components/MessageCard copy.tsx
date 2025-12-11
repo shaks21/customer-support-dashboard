@@ -148,7 +148,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
               </button>
               
               {showActions && (
-                <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border py-1 z-10 min-w-[160px]">
+                <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border py-1 z-10 min-w-40">
                   <button
                     onClick={() => onStatusChange(message.id, 'New')}
                     className={cn(
@@ -188,7 +188,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
         {/* Message Content */}
         <div className="mb-6">
           <div className="flex items-start mb-3">
-            <MessageSquare className="w-5 h-5 text-gray-400 mt-0.5 mr-3 flex-shrink-0" />
+            <MessageSquare className="w-5 h-5 text-gray-400 mt-0.5 mr-3 shrink-0" />
             <p className="text-gray-800 leading-relaxed pr-4">{message.message}</p>
           </div>
           
@@ -212,7 +212,7 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
           <div className="flex items-center space-x-4">
             {/* Customer Avatar & Name */}
             <div className="flex items-center group/customer">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold mr-3">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold mr-3">
                 {message.customerName.charAt(0)}
               </div>
               <div>
@@ -293,15 +293,15 @@ export default function MessageCard({ message, onStatusChange }: MessageCardProp
         <div className={cn(
           "h-full transition-all duration-500",
           message.status === 'New' && "bg-gray-300",
-          message.status === 'In Progress' && "bg-gradient-to-r from-yellow-400 to-yellow-500",
-          message.status === 'Resolved' && "bg-gradient-to-r from-green-400 to-green-500"
+          message.status === 'In Progress' && "bg-linear-to-r from-yellow-400 to-yellow-500",
+          message.status === 'Resolved' && "bg-linear-to-r from-green-400 to-green-500"
         )} />
       </div>
 
       {/* Hover Effects */}
       <div className={cn(
         "absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300",
-        "bg-gradient-to-r from-transparent via-white/50 to-transparent",
+        "bg-linear-to-r from-transparent via-white/50 to-transparent",
         isHovered ? "opacity-100" : "opacity-0"
       )} />
     </div>
