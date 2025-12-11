@@ -8,7 +8,8 @@ import {
   Lightbulb,
   Flag,
   Clock,
-  CheckCircle
+  CheckCircle,
+  CircleQuestionMark 
 } from 'lucide-react';
 import { getCategoryColor, getPriorityColor } from '@/lib/utils';
 
@@ -17,7 +18,7 @@ interface SummaryCardsProps {
 }
 
 export default function SummaryCards({ messages }: SummaryCardsProps) {
-    
+
   const categoryCounts = messages.reduce((acc, msg) => {
     acc[msg.category] = (acc[msg.category] || 0) + 1;
     return acc;
@@ -68,6 +69,13 @@ export default function SummaryCards({ messages }: SummaryCardsProps) {
       icon: Lightbulb,
       color: 'bg-green-500',
       textColor: 'text-green-600'
+    },
+    {
+      title: 'General / Other',
+      value: categoryCounts['General'] || 0,
+      icon: CircleQuestionMark,
+      color: 'bg-gray-500',
+      textColor: 'text-gray-600'
     },
     {
       title: 'Resolved',

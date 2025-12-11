@@ -1,37 +1,218 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+I'll update the README.md with the Future Improvements section. Here's the complete updated README:
 
-## Getting Started
+```markdown
+# Customer Support Triage Dashboard
 
-First, run the development server:
+A dashboard for triaging customer support messages, built in 24 hours for the 24-Hour Build Challenge.
 
+## 🚀 Live Demo
+[Deployed on Vercel]() - *Add Vercel URL here after deployment*
+
+## 📋 Features
+
+### Core Requirements
+- ✅ 18 mock customer support messages with realistic data
+- ✅ Automatic categorization (Bug, Billing, Feature Request, General)
+- ✅ Priority assignment (Low, Medium, High)
+- ✅ Summary dashboard with counts by category and priority
+- ✅ Filter messages by category, priority, and status
+- ✅ Clean, responsive UI built with Tailwind CSS
+
+### Bonus Features
+- ✅ Mark messages as Resolved/In Progress/New
+- ✅ Visual indication of high-priority messages
+- ✅ Status tracking and filtering
+- ✅ Bulk actions (Mark All Resolved, Reset All)
+- ✅ Mobile-responsive design
+
+## 🛠️ Tech Stack
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+- **Vercel** - Deployment
+
+## 🏃‍♂️ Running Locally
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/shaks21/customer-support-dashboard.git
+cd customer-support-dashboard
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 🎯 How It Works
 
-To learn more about Next.js, take a look at the following resources:
+### Categorization Logic
+The system uses keyword-based rules to categorize messages:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Bug**: Contains words like "crash", "error", "bug", "not working", "broken", "fail"
+- **Billing**: Contains words like "invoice", "charge", "bill", "payment", "refund", "price"
+- **Feature Request**: Contains words like "feature", "add", "request", "suggest", "integration", "would like"
+- **General**: Default category when no specific keywords match
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Priority Assignment
+Priority is determined by:
+1. **Keyword detection**: Words like "urgent", "ASAP", "emergency" → High priority
+2. **Category-based**: Bugs and Billing issues are automatically High priority
+3. **Feature requests**: Generally Low priority
+4. **Default**: Medium priority for general inquiries
 
-## Deploy on Vercel
+### Data Flow
+1. Mock messages are loaded with initial categorization
+2. Users can filter by category, priority, and status
+3. Users can update message status (New → In Progress → Resolved)
+4. Dashboard updates in real-time with summary statistics
+5. Bulk actions allow quick status updates across multiple messages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# customer-support-dashboard
+```
+customer-support-dashboard/
+├── app/                    # Next.js app router
+│   ├── layout.tsx         # Root layout with header/footer
+│   ├── page.tsx           # Main dashboard page
+│   └── globals.css        # Global styles with Tailwind
+├── components/            # React components
+│   ├── Dashboard.tsx      # Main dashboard container
+│   ├── Filters.tsx        # Filter controls (category, priority, status)
+│   ├── MessageCard.tsx    # Individual message display card
+│   └── SummaryCards.tsx   # Summary statistics cards
+├── lib/                   # Utilities and data
+│   ├── types.ts           # TypeScript interfaces
+│   ├── data.ts            # 18 mock support messages
+│   ├── categorize.ts      # Keyword-based categorization logic
+│   └── utils.ts           # Helper functions (formatting, colors)
+├── public/                # Static assets
+└── package.json          # Dependencies and scripts
+```
+
+## 🔮 Future Improvements
+
+If I had more time, I would implement:
+
+### 1. **AI Integration**
+- Use OpenAI API for more accurate and nuanced categorization
+- Sentiment analysis to detect frustrated customers
+- Automatic response suggestions
+
+### 2. **Real Data Integration**
+- Connect to real support systems (Zendesk, Intercom, Help Scout)
+- Live sync with email inboxes
+- Webhook support for real-time updates
+
+### 3. **Advanced Filtering & Search**
+- Full-text search across message content
+- Date range filtering
+- Customer segmentation filters
+- Saved filter presets
+
+### 4. **Analytics & Reporting**
+- Charts showing trends over time (volume, resolution time)
+- Team performance metrics
+- Category distribution charts
+- Peak hour analysis
+
+### 5. **Team Collaboration Features**
+- Assign messages to specific team members
+- Internal notes and comments
+- @mentions and notifications
+- Team workload balancing
+
+### 6. **Email Integration**
+- Send responses directly from the dashboard
+- Email templates and snippets
+- Automated follow-up reminders
+- Email threading
+
+### 7. **Data Persistence & Scalability**
+- Database integration (PostgreSQL, MongoDB)
+- User authentication and permissions
+- Audit logs for status changes
+- Data backup and recovery
+
+### 8. **Export & Integration**
+- Export filtered views to CSV/PDF
+- API for external system integration
+- Webhook triggers for specific events
+- Slack/Teams notifications
+
+### 9. **Productivity Enhancements**
+- Keyboard shortcuts for faster triaging
+- Bulk edit operations
+- Quick reply templates
+- Macros for common actions
+
+### 10. **User Experience**
+- Dark mode theme option
+- Customizable dashboard layout
+- Personalized views per team member
+- Mobile app version
+
+### 11. **Advanced Features**
+- SLA (Service Level Agreement) tracking
+- Priority escalation rules
+- Automated triaging rules
+- Customer satisfaction tracking
+- Integration with CRM systems
+
+## ⏱️ Time Spent
+
+- **Hours 0-2**: Project setup, planning, and architecture design
+- **Hours 2-6**: Core components, data structure, and TypeScript setup
+- **Hours 6-10**: UI implementation, styling, and responsive design
+- **Hours 10-14**: Filtering functionality and interactive features
+- **Hours 14-18**: Polish, testing, edge cases, and bug fixes
+- **Hours 18-22**: Documentation, README, and deployment preparation
+- **Hours 22-24**: Final review, adjustments, and submission preparation
+
+## 📝 Design Decisions
+
+### Technical Decisions
+1. **Keyword-based categorization**: Chosen over AI for predictability and speed within the 24-hour constraint
+2. **Client-side state management**: Used React state instead of database for simplicity
+3. **Component-based architecture**: Modular components for maintainability
+4. **TypeScript**: For type safety and better developer experience
+5. **Tailwind CSS**: For rapid, consistent styling
+
+### UX Decisions
+1. **Card-based layout**: Easy to scan and works well on both desktop and mobile
+2. **Color coding**: Visual hierarchy using consistent colors for priorities and categories
+3. **Progressive disclosure**: Filters are expandable, showing active filters when in use
+4. **One-click status updates**: Quick action buttons for changing message status
+5. **Real-time updates**: Dashboard updates immediately when filters or statuses change
+
+### Trade-offs Made
+1. **No backend API**: All logic runs client-side for simplicity
+2. **No authentication**: Since it's a demo/internal tool
+3. **No persistent storage**: State resets on page refresh
+4. **Simple categorization**: Keyword-based instead of ML/AI for reliability
+
+## 🧪 Testing Notes
+
+The dashboard has been tested for:
+- Responsive design (mobile, tablet, desktop)
+- Filter combinations work correctly
+- Status updates persist during session
+- Bulk actions affect all filtered messages
+- Edge cases (empty filter results, etc.)
+
+## 🙏 Acknowledgments
+
+Built for the 24-Hour Build Challenge. Special thanks to:
+- **Next.js team** for the excellent framework
+- **Tailwind CSS** for the utility-first CSS framework
+- **Lucide** for the beautiful icons
+- **Vercel** for seamless deployment
