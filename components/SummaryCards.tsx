@@ -74,7 +74,8 @@ export default function SummaryCards({ messages }: SummaryCardsProps) {
     },
     {
       title: "Avg Response Time",
-      value: `${avgResponseTime}h`,
+      // value: `${avgResponseTime}h`,
+      value: "TBD",
       icon: Clock,
       trend: "-1.2h",
       color: "from-purple-500 to-purple-600",
@@ -518,7 +519,8 @@ export default function SummaryCards({ messages }: SummaryCardsProps) {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-purple-700">
-                  {avgResponseTime}h
+                  {/* {avgResponseTime}h */}
+                  TBD
                 </div>
                 <div className="text-xs text-purple-600">Avg Response</div>
               </div>

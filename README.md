@@ -28,6 +28,7 @@ A dashboard for triaging customer support messages, built in 24 hours for the 24
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
 - **Lucide React** - Icons
+- **AI*** - cerebras_cloud_sdk
 - **Vercel** - Deployment
 
 ## 🏃‍♂️ Running Locally
@@ -68,8 +69,8 @@ Priority is determined by:
 4. **Default**: Medium priority for general inquiries
 
 ### Data Flow
-1. Mock messages are loaded with initial categorization
-2. Users can filter by category, priority, and status
+1. Mock messages are loaded with initial categorization - Ai/Keyword Hybrid
+2. Users can filter and sort by category, priority, and status
 3. Users can update message status (New → In Progress → Resolved)
 4. Dashboard updates in real-time with summary statistics
 5. Bulk actions allow quick status updates across multiple messages
@@ -87,7 +88,7 @@ Priority is determined by:
 ## 📝 Design Decisions
 
 ### Technical Decisions
-1. **Keyword-based categorization**: Chosen over AI for predictability and speed within the 24-hour constraint
+1. **Hybrid AI + Keyword-based categorization**: User can choose between using AI or Keyword categorization. AI would be slower, but perhaps more accurate
 2. **Client-side state management**: Used React state instead of database for simplicity
 3. **Component-based architecture**: Modular components for maintainability
 4. **TypeScript**: For type safety and better developer experience
@@ -101,16 +102,14 @@ Priority is determined by:
 5. **Real-time updates**: Dashboard updates immediately when filters or statuses change
 
 ### Trade-offs Made
-1. **No backend API**: All logic runs client-side for simplicity
-2. **No authentication**: Since it's a demo/internal tool
-3. **No persistent storage**: State resets on page refresh
-4. **Simple categorization**: Keyword-based instead of ML/AI for reliability
+1. **No authentication**: Since it's a demo/internal tool
+2. **Minimal persistent storage**: State resets on page refresh, except for the AI toggle choice
 
 ## 🧪 Testing Notes
 
 The dashboard has been tested for:
-- Responsive design (mobile, desktop)
-- Filter combinations work correctly
+- Responsive design (desktop)
+- Filter and sort combinations work correctly
 - Status updates persist during session
 - Bulk actions affect all filtered messages
 - Edge cases (empty filter results, etc.)
@@ -119,7 +118,7 @@ The dashboard has been tested for:
 
 If I had more time, I would implement:
 
-### 1. **AI Integration**
+### 1. **Better AI Integration**
 - Use OpenAI API for more accurate and nuanced categorization
 - Sentiment analysis to detect frustrated customers
 - Automatic response suggestions

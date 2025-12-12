@@ -6,16 +6,27 @@ import {
   createAIMessages,
   createKeywordMessages,
 } from "@/lib/data";
-import { SupportMessage, FilterOptions } from "@/lib/types";
+import {
+  SupportMessage,
+  FilterOptions,
+  SortField,
+  SortDirection,
+} from "@/lib/types";
 import SummaryCards from "./SummaryCards";
 import Filters from "./Filters";
 import MessageCard from "./MessageCard";
 import AIToggle from "./AIToggle";
 import { RefreshCw, Loader2, Zap, Sparkles, Brain, Hash } from "lucide-react";
+import SortDropdown from "./SortDropdown"; // Add this import
+import { sortMessages } from "@/lib/sortUtils";
 
 export default function Dashboard() {
   const [messages, setMessages] = useState<SupportMessage[]>([]);
   const [filters, setFilters] = useState<FilterOptions>({});
+  const [sortOptions, setSortOptions] = useState({
+    field: "priority" as SortField,
+    direction: "desc" as SortDirection,
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [useAI, setUseAI] = useState<boolean>(true); // Default to true, update in useEffect
@@ -66,7 +77,7 @@ export default function Dashboard() {
   const handleToggleChange = async (useAICategorization: boolean) => {
     // Update state - this will trigger the useEffect above
     setUseAI(useAICategorization);
-    
+
     // Only access localStorage on client side
     if (typeof window !== "undefined") {
       localStorage.setItem(
@@ -77,7 +88,7 @@ export default function Dashboard() {
   };
 
   const filteredMessages = useMemo(() => {
-    return messages.filter((message) => {
+    const filtered = messages.filter((message) => {
       if (filters.category && message.category !== filters.category)
         return false;
       if (filters.priority && message.priority !== filters.priority)
@@ -85,7 +96,14 @@ export default function Dashboard() {
       if (filters.status && message.status !== filters.status) return false;
       return true;
     });
-  }, [messages, filters]);
+
+    return sortMessages(filtered, sortOptions.field, sortOptions.direction);
+  }, [messages, filters, sortOptions.field, sortOptions.direction]);
+
+  // Add handler for sort change
+  const handleSortChange = (field: SortField, direction: SortDirection) => {
+    setSortOptions({ field, direction });
+  };
 
   const handleStatusChange = (id: string, status: SupportMessage["status"]) => {
     setMessages(
@@ -277,7 +295,7 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Messages Section - White with subtle pattern */}
+      {/* Messages Section - Updated with Sorting */}
       <div className="bg-white rounded-2xl shadow-sm border p-6 relative overflow-hidden">
         {/* Subtle pattern overlay */}
         <div
@@ -305,8 +323,24 @@ export default function Dashboard() {
               </p>
             </div>
 
-            <div className="text-sm text-gray-600 bg-gray-50 px-3 py-1.5 rounded-lg">
-              Sorted by: <span className="font-medium">Priority & Date</span>
+            {/* Replace the current sorting text with SortDropdown */}
+            <div className="flex items-center gap-4">
+              <SortDropdown
+                sortField={sortOptions.field}
+                sortDirection={sortOptions.direction}
+                onSortChange={handleSortChange}
+              />
+
+              {/* Optional: Show current sort in a badge */}
+              <div className="hidden md:flex items-center gap-2 text-sm text-gray-600 bg-gray-50 px-3 py-1.5 rounded-lg">
+                <span>Sorted by:</span>
+                <span className="font-medium capitalize">
+                  {sortOptions.field === "date" ? "Date" : sortOptions.field}
+                </span>
+                <span className="text-gray-400">
+                  {sortOptions.direction === "desc" ? "(Desc)" : "(Asc)"}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -384,9 +418,9 @@ export default function Dashboard() {
             <div className="text-sm text-gray-300">Active Filters</div>
           </div>
         </div>
-        <div className="text-center text-xs text-gray-400 mt-4">
+        {/* <div className="text-center text-xs text-gray-400 mt-4">
           Last updated: Just now • Auto-refresh every 5 minutes
-        </div>
+        </div> */}
       </div>
     </div>
   );
