@@ -54,7 +54,7 @@ npm run dev
 ## 🎯 How It Works
 
 ### Categorization Logic
-The system uses keyword-based rules to categorize messages:
+The system uses 2 methods for categorization. AI and Keyword-based rules to categorize messages:
 
 - **Bug**: Contains words like "crash", "error", "bug", "not working", "broken", "fail"
 - **Billing**: Contains words like "invoice", "charge", "bill", "payment", "refund", "price"
@@ -67,6 +67,8 @@ Priority is determined by:
 2. **Category-based**: Bugs and Billing issues are automatically High priority
 3. **Feature requests**: Generally Low priority
 4. **Default**: Medium priority for general inquiries
+
+The messages that have no keyword matches can be catagorized using AI for additional accuracy.
 
 ### Data Flow
 1. Mock messages are loaded with initial categorization - Ai/Keyword Hybrid
